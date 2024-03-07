@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tuananh-dpl
+  name: demo-app-dpl
   namespace: deploy-argocd
   labels:
-    app: nodeapp
+    app: demo-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nodeapp
+      app: demo-app
   template:
     metadata:
       labels:
-        app: nodeapp
+        app: demo-app
     spec:
       containers:
         - name: gitops-demo
-          image: tuannanhh/gitops-demo:2
+          image: datngxtiens/gitops-demo:2
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -25,14 +25,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: tuananh-svc
+  name: demo-app-svc
   namespace: deploy-argocd
 spec:
   selector:
-    app: nodeapp
+    app: demo-app
   type: NodePort
   ports:
     - protocol: TCP
       port: 8080
       targetPort: 8080
-#       nodePort: 30132
+      nodePort: 30398
