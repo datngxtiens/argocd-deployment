@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: gitops-demo
-          image: datngxtiens/gitops-demo:11
+          image: datngxtiens/gitops-demo:13
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
